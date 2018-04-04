@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_input_add" />
-    </TableRow>
 
     <TableRow
         android:layout_width="match_parent"
@@ -24,7 +11,7 @@
         android:gravity="center">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/new_contact_first_name_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -33,7 +20,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/new_contact_last_name_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -58,7 +45,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/new_contact_phone_number_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -82,12 +69,12 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/new_contact_facebook_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="phone" />
+            android:inputType="text" />
     </TableRow>
 
     <TableRow
@@ -106,12 +93,12 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/new_contact_twitter_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="phone" />
+            android:inputType="text" />
     </TableRow>
 
     <TableRow
@@ -130,12 +117,12 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/new_contact_instagram_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="phone" />
+            android:inputType="text" />
     </TableRow>
 
     <TableRow
@@ -154,12 +141,12 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/new_contact_snapchat_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="phone" />
+            android:inputType="text" />
     </TableRow>
 
     <TableRow
@@ -178,12 +165,12 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editText8"
+            android:id="@+id/new_contact_linkedin_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="phone" />
+            android:inputType="text" />
     </TableRow>
 
     <TableRow
@@ -193,14 +180,14 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/new_contact_save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="Save" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/new_contact_cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
