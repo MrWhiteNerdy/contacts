@@ -56,7 +56,9 @@ public class MainActivity extends ListActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
                 Contact contact = contactOperations.getContact(id);
-                Toast.makeText(MainActivity.this, contact.toString(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, ContactDetailActivity.class);
+                intent.putExtra("contact", contact);
+                startActivity(intent);
             }
         });
 
