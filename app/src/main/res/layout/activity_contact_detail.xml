@@ -176,10 +176,10 @@
             android:text="Edit" />
 
         <Button
-            android:id="@+id/contact_detail_back_button"
+            android:id="@+id/contact_detail_delete_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="Back" />
+            android:text="Delete" />
     </TableRow>
 </TableLayout>

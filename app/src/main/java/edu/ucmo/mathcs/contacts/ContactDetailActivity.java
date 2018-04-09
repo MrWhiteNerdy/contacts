@@ -12,29 +12,29 @@ import android.widget.Toast;
 
 public class ContactDetailActivity extends AppCompatActivity {
 
+    private TextView nameTextView, phoneNumberTextView, facebookUsernameTextView,
+            twitterUsernameTextView, instagramUsernameTextView, snapchatUsernameTextView,
+            linkedinUsernameTextView;
+
+    private Contact contact;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_contact_detail);
 
         Intent intent = getIntent();
-        final Contact contact = (Contact) intent.getSerializableExtra("contact");
+        contact = (Contact) intent.getSerializableExtra("contact");
 
-        TextView nameTextView = findViewById(R.id.contact_detail_name);
-        TextView phoneNumberTextView = findViewById(R.id.contact_detail_phone_number);
-        TextView facebookUsernameTextView = findViewById(R.id.contact_detail_facebook_username);
-        TextView twitterUsernameTextView = findViewById(R.id.contact_detail_twitter_username);
-        TextView instagramUsernameTextView = findViewById(R.id.contact_detail_instagram_username);
-        TextView snapchatUsernameTextView = findViewById(R.id.contact_detail_snapchat_username);
-        TextView linkedinUsernameTextView = findViewById(R.id.contact_detail_linkedin_username);
+        nameTextView = findViewById(R.id.contact_detail_name);
+        phoneNumberTextView = findViewById(R.id.contact_detail_phone_number);
+        facebookUsernameTextView = findViewById(R.id.contact_detail_facebook_username);
+        twitterUsernameTextView = findViewById(R.id.contact_detail_twitter_username);
+        instagramUsernameTextView = findViewById(R.id.contact_detail_instagram_username);
+        snapchatUsernameTextView = findViewById(R.id.contact_detail_snapchat_username);
+        linkedinUsernameTextView = findViewById(R.id.contact_detail_linkedin_username);
 
-        nameTextView.setText(contact.getFirstName() + " " + contact.getLastName());
-        phoneNumberTextView.setText(contact.getPhoneNumber());
-        facebookUsernameTextView.setText(contact.getFacebookUsername());
-        twitterUsernameTextView.setText("@" + contact.getTwitterUsername());
-        instagramUsernameTextView.setText("@" + contact.getInstagramUsername());
-        snapchatUsernameTextView.setText("@" + contact.getSnapchatUsername());
-        linkedinUsernameTextView.setText(contact.getLinkedinUsername());
+        refreshContact(contact);
 
         TableRow facebookTableRow = findViewById(R.id.contact_detail_facebook_row);
         facebookTableRow.setOnClickListener(new View.OnClickListener() {
@@ -109,16 +109,44 @@ public class ContactDetailActivity extends AppCompatActivity {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ContactDetailActivity.this, "Edit button clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ContactDetailActivity.this, EditContactActivity.class);
+                intent.putExtra("contact", contact);
+                startActivityForResult(intent, 102);
             }
         });
 
-        Button backButton = findViewById(R.id.contact_detail_back_button);
-        backButton.setOnClickListener(new View.OnClickListener() {
+        Button deleteButton = findViewById(R.id.contact_detail_delete_button);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                // TODO: Implement delete contact and refresh list view
+                Toast.makeText(ContactDetailActivity.this, "Delete button pressed", Toast.LENGTH_LONG).show();
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 102) {
+            if (data != null && data.getSerializableExtra("contact") != null) {
+                Contact updatedContact = (Contact) data.getSerializableExtra("contact");
+                refreshContact(updatedContact);
+            } else {
+                Toast.makeText(this, "Contact not updated", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void refreshContact(Contact contact) {
+        nameTextView.setText(contact.getFirstName() + " " + contact.getLastName());
+        phoneNumberTextView.setText(contact.getPhoneNumber());
+        facebookUsernameTextView.setText(contact.getFacebookUsername());
+        twitterUsernameTextView.setText("@" + contact.getTwitterUsername());
+        instagramUsernameTextView.setText("@" + contact.getInstagramUsername());
+        snapchatUsernameTextView.setText("@" + contact.getSnapchatUsername());
+        linkedinUsernameTextView.setText(contact.getLinkedinUsername());
+    }
+
 }
