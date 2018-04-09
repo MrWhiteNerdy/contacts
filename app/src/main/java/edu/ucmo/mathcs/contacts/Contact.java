@@ -27,6 +27,20 @@ public class Contact implements Serializable {
         this.snapchatUsername = snapchatUsername;
     }
 
+    public Contact(long id, String firstName, String lastName, String phoneNumber,
+                   String facebookUsername, String twitterUsername, String instagramUsername,
+                   String linkedinUsername, String snapchatUsername) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.facebookUsername = facebookUsername;
+        this.twitterUsername = twitterUsername;
+        this.instagramUsername = instagramUsername;
+        this.linkedinUsername = linkedinUsername;
+        this.snapchatUsername = snapchatUsername;
+    }
+
     public Contact() {
     }
 

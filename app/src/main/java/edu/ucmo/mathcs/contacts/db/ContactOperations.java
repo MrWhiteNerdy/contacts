@@ -59,13 +59,13 @@ public class ContactOperations {
 
     public Contact getContact(long id) {
         Cursor cursor = database.query(ContactDBHandler.TABLE_CONTACTS, ALL_COLUMNS,
-                ContactDBHandler.COLUMN_ID + "=?", new String[]{String.valueOf(id)},
+                ContactDBHandler.COLUMN_ID + "= ?", new String[]{String.valueOf(id)},
                 null, null, null, null);
 
         if (cursor != null)
             cursor.moveToFirst();
 
-        return new Contact(cursor.getString(1),
+        return new Contact(cursor.getLong(0), cursor.getString(1),
                 cursor.getString(2), cursor.getString(3), cursor.getString(4),
                 cursor.getString(5), cursor.getString(6), cursor.getString(7),
                 cursor.getString(8));
@@ -80,6 +80,28 @@ public class ContactOperations {
         }
 
         return cursor;
+    }
+
+    public int updateContact(Contact contact) {
+        ContentValues values = new ContentValues();
+        values.put(ContactDBHandler.COLUMN_FIRST_NAME, contact.getFirstName());
+        values.put(ContactDBHandler.COLUMN_LAST_NAME, contact.getLastName());
+        values.put(ContactDBHandler.COLUMN_PHONE_NUMBER, contact.getPhoneNumber());
+        values.put(ContactDBHandler.COLUMN_FACEBOOK_USERNAME, contact.getFacebookUsername());
+        values.put(ContactDBHandler.COLUMN_TWITTER_USERNAME, contact.getTwitterUsername());
+        values.put(ContactDBHandler.COLUMN_INSTAGRAM_USERNAME, contact.getInstagramUsername());
+        values.put(ContactDBHandler.COLUMN_LINKEDIN_USERNAME, contact.getLinkedinUsername());
+        values.put(ContactDBHandler.COLUMN_SNAPCHAT_USERNAME, contact.getSnapchatUsername());
+
+        return database.update(ContactDBHandler.TABLE_CONTACTS, values,
+                ContactDBHandler.COLUMN_ID + "= ?",
+                new String[]{String.valueOf(contact.getId())});
+    }
+
+    public void deleteContact(Contact contact) {
+        database.delete(ContactDBHandler.TABLE_CONTACTS,
+                ContactDBHandler.COLUMN_ID + "= ?",
+                new String[]{String.valueOf(contact.getId())});
     }
 
 }

@@ -11,7 +11,7 @@
         android:gravity="center">
 
         <EditText
-            android:id="@+id/new_contact_first_name_edit_text"
+            android:id="@+id/edit_contact_first_name_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -20,7 +20,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/new_contact_last_name_edit_text"
+            android:id="@+id/edit_contact_last_name_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -36,7 +36,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/new_contact_phone_number_text_view"
+            android:id="@+id/edit_contact_phone_number_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,7 +45,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/new_contact_phone_number_edit_text"
+            android:id="@+id/edit_contact_phone_number_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -60,7 +60,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/new_contact_facebook_username_text_view"
+            android:id="@+id/edit_contact_facebook_username_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -69,7 +69,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/new_contact_facebook_edit_text"
+            android:id="@+id/edit_contact_facebook_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -84,7 +84,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/new_contact_twitter_username_text_view"
+            android:id="@+id/edit_contact_twitter_username_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -93,7 +93,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/new_contact_twitter_edit_text"
+            android:id="@+id/edit_contact_twitter_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -108,7 +108,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/new_contact_instagram_username_text_view"
+            android:id="@+id/edit_contact_instagram_username_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -117,7 +117,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/new_contact_instagram_edit_text"
+            android:id="@+id/edit_contact_instagram_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -132,7 +132,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/new_contact_snapchat_username_text_view"
+            android:id="@+id/edit_contact_snapchat_username_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -141,7 +141,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/new_contact_snapchat_edit_text"
+            android:id="@+id/edit_contact_snapchat_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -156,7 +156,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/new_contact_linkedin_username_text_view"
+            android:id="@+id/edit_contact_linkedin_username_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -165,7 +165,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/new_contact_linkedin_edit_text"
+            android:id="@+id/edit_contact_linkedin_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -180,14 +180,14 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/new_contact_save_button"
+            android:id="@+id/edit_contact_save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="Save" />
 
         <Button
-            android:id="@+id/new_contact_cancel_button"
+            android:id="@+id/edit_contact_cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

@@ -22,7 +22,7 @@ public class ContactDBHandler extends SQLiteOpenHelper {
 
     private static final String TABLE_CREATE =
             "CREATE TABLE " + TABLE_CONTACTS + " (" +
-                    COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_ID + " INTEGER PRIMARY KEY, " +
                     COLUMN_FIRST_NAME + " TEXT, " +
                     COLUMN_LAST_NAME + " TEXT, " +
                     COLUMN_PHONE_NUMBER + " TEXT, " +
