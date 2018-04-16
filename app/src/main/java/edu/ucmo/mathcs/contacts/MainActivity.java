@@ -58,7 +58,7 @@ public class MainActivity extends ListActivity {
                 Contact contact = contactOperations.getContact(id);
                 Intent intent = new Intent(MainActivity.this, ContactDetailActivity.class);
                 intent.putExtra("contact", contact);
-                startActivity(intent);
+                startActivityForResult(intent, 103);
             }
         });
 
@@ -83,6 +83,9 @@ public class MainActivity extends ListActivity {
             } else {
                 Toast.makeText(this, "Contact not added", Toast.LENGTH_LONG).show();
             }
+        } else if (requestCode == 103) {
+            adapter.swapCursor(contactOperations.getAllContacts());
+            adapter.notifyDataSetChanged();
         }
     }
 
