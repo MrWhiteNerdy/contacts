@@ -167,7 +167,6 @@ public class ContactDetailActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-//                Toast.makeText(getApplicationContext(), "Yes button was clicked", Toast.LENGTH_SHORT).show();
                 contactOperations.deleteContact(contact);
                 Intent intent = new Intent();
 

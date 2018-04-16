@@ -2,14 +2,12 @@ package edu.ucmo.mathcs.contacts;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import edu.ucmo.mathcs.contacts.db.ContactDBHandler;
@@ -35,20 +33,12 @@ public class MainActivity extends ListActivity {
         };
 
         int[] toViews = {
+                R.id.item_contact_picture,
                 R.id.item_contact_name
         };
 
-         adapter = new SimpleCursorAdapter(this, R.layout.item_contact,
+        adapter = new ContactCursorAdapter(this, R.layout.item_contact,
                 contactOperations.getAllContacts(), fromColumns, toViews, 0);
-         adapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
-             @Override
-             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-                 String fullName = cursor.getString(1) + " " + cursor.getString(2);
-                 ((TextView) view).setText(fullName);
-
-                 return true;
-             }
-         });
 
         ListView listView = getListView();
         listView.setAdapter(adapter);
