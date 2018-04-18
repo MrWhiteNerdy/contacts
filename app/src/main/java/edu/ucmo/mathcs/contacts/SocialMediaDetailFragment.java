@@ -44,6 +44,10 @@ public class SocialMediaDetailFragment extends Fragment {
             }
         });
 
+        if (contact.getFacebookUsername().equals("")) {
+            facebookTableRow.setVisibility(View.GONE);
+        }
+
         TableRow twitterTableRow = view.findViewById(R.id.contact_detail_twitter_row);
         twitterTableRow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +57,10 @@ public class SocialMediaDetailFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        if (contact.getTwitterUsername().equals("")) {
+            twitterTableRow.setVisibility(View.GONE);
+        }
 
         TableRow instagramTableRow = view.findViewById(R.id.contact_detail_instagram_row);
         instagramTableRow.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +72,10 @@ public class SocialMediaDetailFragment extends Fragment {
             }
         });
 
+        if (contact.getInstagramUsername().equals("")) {
+            instagramTableRow.setVisibility(View.GONE);
+        }
+
         TableRow snapchatTableRow = view.findViewById(R.id.contact_detail_snapchat_row);
         snapchatTableRow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +86,10 @@ public class SocialMediaDetailFragment extends Fragment {
             }
         });
 
+        if (contact.getSnapchatUsername().equals("")) {
+            snapchatTableRow.setVisibility(View.GONE);
+        }
+
         TableRow linkedinTableRow = view.findViewById(R.id.contact_detail_linkedin_row);
         linkedinTableRow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +99,10 @@ public class SocialMediaDetailFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        if (contact.getLinkedinUsername().equals("")) {
+            linkedinTableRow.setVisibility(View.GONE);
+        }
 
         return view;
     }
