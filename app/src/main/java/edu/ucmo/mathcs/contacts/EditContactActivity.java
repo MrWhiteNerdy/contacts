@@ -64,10 +64,10 @@ public class EditContactActivity extends AppCompatActivity {
                 contact.setSnapchatUsername(snapchatEditText.getText().toString());
                 contact.setLinkedinUsername(linkedinEditText.getText().toString());
 
-                contactOperations.updateContact(contact);
+                Contact updatedContact = contactOperations.updateContact(contact);
 
                 Intent intent = new Intent();
-                intent.putExtra("contact", contact);
+                intent.putExtra("contact", updatedContact);
 
                 setResult(Activity.RESULT_OK, intent);
 

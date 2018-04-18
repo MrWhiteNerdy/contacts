@@ -12,18 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import edu.ucmo.mathcs.contacts.db.ContactOperations;
 
-/**
- * Created by jansenmorby on 4/16/18.
- */
-
 public class ContactDetailFragment extends Fragment {
-    private TextView nameTextView, phoneNumberTextView;
 
     private Contact contact;
 
@@ -36,14 +30,17 @@ public class ContactDetailFragment extends Fragment {
         contactOperations = new ContactOperations(getActivity());
         contactOperations.open();
 
-        View view = inflater.inflate(R.layout.activity_social_media_detail_fragment, container, false);
+        View view = inflater.inflate(R.layout.activity_contact_detail_fragment, container, false);
 
         contact = (Contact) getArguments().getSerializable("contact");
 
-        nameTextView = view.findViewById(R.id.contact_detail_name);
-        phoneNumberTextView = view.findViewById(R.id.contact_detail_phone_number);
+        TextView nameTextView = view.findViewById(R.id.contact_detail_name);
+        TextView phoneNumberTextView = view.findViewById(R.id.contact_detail_phone_number);
 
-        refreshContact(contact);
+        String fullName = contact.getFirstName() + " " + contact.getLastName();
+
+        nameTextView.setText(fullName);
+        phoneNumberTextView.setText(contact.getPhoneNumber());
 
         Button callButton = view.findViewById(R.id.contact_detail_call_button);
         callButton.setOnClickListener(new View.OnClickListener() {
@@ -85,9 +82,23 @@ public class ContactDetailFragment extends Fragment {
         return view;
     }
 
-    private void refreshContact(Contact contact) {
-        nameTextView.setText(contact.getFirstName() + " " + contact.getLastName());
-        phoneNumberTextView.setText(contact.getPhoneNumber());
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 102) {
+            if (data != null && data.getSerializableExtra("contact") != null) {
+                Contact updatedContact = (Contact) data.getSerializableExtra("contact");
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("contact", updatedContact);
+                setArguments(bundle);
+                ((ContactDetailActivity)getActivity()).getSocialMediaDetailFragment().setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .detach(this).attach(this).commit();
+            } else {
+                Toast.makeText(getContext(), "Contact not updated", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     private void showDeleteMessage() {

@@ -1,41 +1,28 @@
 package edu.ucmo.mathcs.contacts;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import edu.ucmo.mathcs.contacts.db.ContactOperations;
 
 public class ContactDetailActivity extends AppCompatActivity {
 
-    ContactDetailFragment contactDetailFragment;
-    SocialMediaDetailFragment socialMediaDetailFragment;
-
-    private Contact contact;
-
-    private ContactOperations contactOperations;
+    private ContactDetailFragment contactDetailFragment;
+    private SocialMediaDetailFragment socialMediaDetailFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact_detail_fragment);
+        setContentView(R.layout.activity_contact_detail);
 
-        contactOperations = new ContactOperations(this);
+        ContactOperations contactOperations = new ContactOperations(this);
         contactOperations.open();
 
         Intent intent = getIntent();
-        contact = (Contact) intent.getSerializableExtra("contact");
+        Contact contact = (Contact) intent.getSerializableExtra("contact");
 
         Bundle bundle = new Bundle();
         bundle.putSerializable("contact", contact);
@@ -47,8 +34,8 @@ public class ContactDetailActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().add(R.id.container, contactDetailFragment).commit();
 
-        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-        tabs.addTab(tabs.newTab().setText("Contact"));
+        TabLayout tabs = findViewById(R.id.tabs);
+        tabs.addTab(tabs.newTab().setText("Contact Info"));
         tabs.addTab(tabs.newTab().setText("Social Media"));
 
         tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -77,18 +64,8 @@ public class ContactDetailActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 102) {
-            if (data != null && data.getSerializableExtra("contact") != null) {
-                Contact updatedContact = (Contact) data.getSerializableExtra("contact");
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, contactDetailFragment).commit();
-            } else {
-                Toast.makeText(this, "Contact not updated", Toast.LENGTH_LONG).show();
-            }
-        }
+    public Fragment getSocialMediaDetailFragment() {
+        return socialMediaDetailFragment;
     }
 
 }
