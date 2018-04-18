@@ -11,32 +11,28 @@ import android.view.ViewGroup;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-/**
- * Created by jansenmorby on 4/16/18.
- */
-
 public class SocialMediaDetailFragment extends Fragment {
-    private TextView facebookUsernameTextView,
-            twitterUsernameTextView, instagramUsernameTextView, snapchatUsernameTextView,
-            linkedinUsernameTextView;
 
     private Contact contact;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.activity_social_media_detail_fragment, container, false);
 
         contact = (Contact) getArguments().getSerializable("contact");
 
-        facebookUsernameTextView = view.findViewById(R.id.contact_detail_facebook_username);
-        twitterUsernameTextView = view.findViewById(R.id.contact_detail_twitter_username);
-        instagramUsernameTextView = view.findViewById(R.id.contact_detail_instagram_username);
-        snapchatUsernameTextView = view.findViewById(R.id.contact_detail_snapchat_username);
-        linkedinUsernameTextView = view.findViewById(R.id.contact_detail_linkedin_username);
+        TextView facebookUsernameTextView = view.findViewById(R.id.contact_detail_facebook_username);
+        TextView twitterUsernameTextView = view.findViewById(R.id.contact_detail_twitter_username);
+        TextView instagramUsernameTextView = view.findViewById(R.id.contact_detail_instagram_username);
+        TextView snapchatUsernameTextView = view.findViewById(R.id.contact_detail_snapchat_username);
+        TextView linkedinUsernameTextView = view.findViewById(R.id.contact_detail_linkedin_username);
 
-        refreshContact(contact);
+        facebookUsernameTextView.setText(contact.getFacebookUsername());
+        twitterUsernameTextView.setText(contact.getTwitterUsername());
+        instagramUsernameTextView.setText(contact.getInstagramUsername());
+        snapchatUsernameTextView.setText(contact.getSnapchatUsername());
+        linkedinUsernameTextView.setText(contact.getLinkedinUsername());
 
         TableRow facebookTableRow = view.findViewById(R.id.contact_detail_facebook_row);
         facebookTableRow.setOnClickListener(new View.OnClickListener() {
@@ -91,11 +87,4 @@ public class SocialMediaDetailFragment extends Fragment {
         return view;
     }
 
-    private void refreshContact(Contact contact) {
-        facebookUsernameTextView.setText(contact.getFacebookUsername());
-        twitterUsernameTextView.setText("@" + contact.getTwitterUsername());
-        instagramUsernameTextView.setText("@" + contact.getInstagramUsername());
-        snapchatUsernameTextView.setText("@" + contact.getSnapchatUsername());
-        linkedinUsernameTextView.setText(contact.getLinkedinUsername());
-    }
 }

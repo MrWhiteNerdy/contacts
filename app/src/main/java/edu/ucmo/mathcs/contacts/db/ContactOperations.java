@@ -73,7 +73,7 @@ public class ContactOperations {
 
     public Cursor getAllContacts() {
         Cursor cursor = database.query(ContactDBHandler.TABLE_CONTACTS, ALL_COLUMNS, null,
-                null, null, null, null);
+                null, null, null, ContactDBHandler.COLUMN_LAST_NAME);
 
         if (cursor != null) {
             cursor.moveToFirst();
@@ -82,7 +82,7 @@ public class ContactOperations {
         return cursor;
     }
 
-    public int updateContact(Contact contact) {
+    public Contact updateContact(Contact contact) {
         ContentValues values = new ContentValues();
         values.put(ContactDBHandler.COLUMN_FIRST_NAME, contact.getFirstName());
         values.put(ContactDBHandler.COLUMN_LAST_NAME, contact.getLastName());
@@ -93,9 +93,11 @@ public class ContactOperations {
         values.put(ContactDBHandler.COLUMN_LINKEDIN_USERNAME, contact.getLinkedinUsername());
         values.put(ContactDBHandler.COLUMN_SNAPCHAT_USERNAME, contact.getSnapchatUsername());
 
-        return database.update(ContactDBHandler.TABLE_CONTACTS, values,
+        database.update(ContactDBHandler.TABLE_CONTACTS, values,
                 ContactDBHandler.COLUMN_ID + "= ?",
                 new String[]{String.valueOf(contact.getId())});
+
+        return getContact(contact.getId());
     }
 
     public void deleteContact(Contact contact) {
