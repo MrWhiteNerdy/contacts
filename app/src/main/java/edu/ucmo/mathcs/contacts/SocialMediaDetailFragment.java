@@ -41,6 +41,12 @@ public class SocialMediaDetailFragment extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse("https://www.facebook.com/" + contact.getFacebookUsername()));
                 startActivity(intent);
+                /*try {
+                    getActivity().getApplicationContext().getPackageManager().getPackageInfo("com.facebook.katana", 0);
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/" + contact.getFacebookUsername())));
+                } catch (Exception e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/" + contact.getFacebookUsername())));
+                }*/
             }
         });
 
