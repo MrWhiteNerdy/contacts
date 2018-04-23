@@ -3,7 +3,13 @@ package edu.ucmo.mathcs.contacts;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatCallback;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.view.ActionMode;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -13,16 +19,25 @@ import android.widget.Toast;
 import edu.ucmo.mathcs.contacts.db.ContactDBHandler;
 import edu.ucmo.mathcs.contacts.db.ContactOperations;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends ListActivity implements AppCompatCallback {
 
     private ContactOperations contactOperations;
 
     private SimpleCursorAdapter adapter;
 
+    private AppCompatDelegate delegate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        delegate = AppCompatDelegate.create(this, this);
+        delegate.onCreate(savedInstanceState);
+
+        delegate.setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        delegate.setSupportActionBar(toolbar);
 
         contactOperations = new ContactOperations(this);
         contactOperations.open();
@@ -77,6 +92,28 @@ public class MainActivity extends ListActivity {
             adapter.swapCursor(contactOperations.getAllContacts());
             adapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        delegate.getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public void onSupportActionModeStarted(ActionMode mode) {
+
+    }
+
+    @Override
+    public void onSupportActionModeFinished(ActionMode mode) {
+
+    }
+
+    @Nullable
+    @Override
+    public ActionMode onWindowStartingSupportActionMode(ActionMode.Callback callback) {
+        return null;
     }
 
 }
